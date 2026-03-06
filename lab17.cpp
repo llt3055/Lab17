@@ -103,6 +103,7 @@ void insert_node(Node *&head, float val, int pos) {
 }
 
 void delete_node(Node *&head, int pos) {
+    if (!head) return;
     Node *current = head;
     Node *prev = nullptr;
 
@@ -110,8 +111,13 @@ void delete_node(Node *&head, int pos) {
         prev = current;
         current = current->next;
     }
-    prev->next = current->next; 
-    delete current;
+    if (current) {
+        if (prev == nullptr) {
+            head = current->next;
+        } else {
+            prev->next = current->next;
+        }
+        delete current;
 }
 
 void delete_list(Node *&head) {
