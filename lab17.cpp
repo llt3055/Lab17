@@ -194,3 +194,4 @@ void delete_list(Node *&head) {
     }
     head = nullptr;
 }
+
