@@ -25,29 +25,18 @@ int main() {
 
     // create a linked list of size SIZE with random numbers 0-99
     for (int i = 0; i < SIZE; i++) {
-        int tmp_val = rand() % 100;
-        Node *newVal = new Node;
-        
-        // adds node at head
-        if (!head) {
-            head = newVal;
-            newVal->next = nullptr;
-            newVal->value = tmp_val;
-        }
-        else {
-            newVal->next = head;
-            newVal->value = tmp_val;
-            head = newVal;
-        }
+        push_front(head, rand() % 100);
     }
+    cout << "Initial list:" << endl;
     output(head);
 
     // deleting a node
-    cout << "Which node to delete? " << endl;
-    output(head);
+    cout << "Which node to delete? (1-" << SIZE << ")" << endl;
     int entry;
     cout << "Choice --> ";
     cin >> entry;
+    delete_node(head, entry);
+    output(head);
 
     // traverse that many times and delete that node
     Node *current = head;
