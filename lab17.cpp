@@ -1,4 +1,6 @@
 #include <iostream>
+#include <cstdlib> 
+#include <ctime>  
 using namespace std;
 
 const int SIZE = 7;  
@@ -8,7 +10,7 @@ struct Node {
     Node *next;
 };
 
-
+//prototypes.
 void push_front(Node *&head, float val);  
 void push_back(Node *&head, float val);   
 void insert_node(Node *&head, float val, int pos); 
@@ -17,6 +19,7 @@ void delete_list(Node *&head);
 void output(Node *);
 
 int main() {
+    srand(time(0));// seed random number generator with current time
     Node *head = nullptr;
     int count = 0;
 
@@ -125,4 +128,11 @@ void output(Node *hd) {
         current = current->next;
     }
     cout << endl;
+}
+
+void push_front(Node *&head, float val) {
+    Node *newNode = new Node;
+    newNode->value = val;
+    newNode->next = head;
+    head = newNode;
 }
