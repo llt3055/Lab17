@@ -38,68 +38,17 @@ int main() {
     delete_node(head, entry);
     output(head);
 
-    // traverse that many times and delete that node
-    Node *current = head;
-    Node *prev = nullptr;  // start prev as nullptr to detect head deletion
-
-    for (int i = 0; i < (entry - 1); i++) {
-        prev = current;
-        current = current->next;
-    }
-
-    // at this point, delete current and reroute pointers
-    if (current) {
-        if (prev == nullptr) {
-            // deleting the head node
-            head = current->next;
-        } else {
-            prev->next = current->next;
-        }
-        delete current;
-        current = nullptr;
-    }
-    output(head);
-
     // insert a node
     cout << "After which node to insert 10000? " << endl;
-    count = 1;
-    current = head;
-    while (current) {
-        cout << "[" << count++ << "] " << current->value << endl;
-        current = current->next;
-    }
     cout << "Choice --> ";
     cin >> entry;
-
-    current = head;
-    prev = nullptr;  // reset prev to nullptr for same reason
-
-    for (int i = 0; i < entry; i++) {
-        prev = current;
-        current = current->next;
-    }
-
-    // at this point, insert a node between prev and current
-    Node *newnode = new Node;
-    newnode->value = 10000;
-    newnode->next = current;
-
-    if (prev == nullptr) {
-        // inserting before the head
-        head = newnode;
-    } else {
-        prev->next = newnode;
-    }
+    insert_node(head, 10000, entry);
     output(head);
 
+
     // deleting the linked list
-    current = head;
-    while (current) {
-        head = current->next;
-        delete current;
-        current = head;
-    }
-    head = nullptr;
+    cout << "Deleting the entire list..." << endl;
+    delete_list(head);
     output(head);
 
     return 0;
@@ -158,29 +107,20 @@ void delete_node(Node *&head, int pos) {
     Node *prev = nullptr;
 
     for (int i = 0; i < (pos - 1); i++) {
-        if (current) {
-            prev = current;
-            current = current->next;
-        }
+        prev = current;
+        current = current->next;
     }
-
-    if (current) {
-        if (prev == nullptr) {
-            head = current->next;
-        } else {
-            prev->next = current->next;
-        }
-        delete current;
-    }
+    prev->next = current->next; 
+    delete current;
 }
 
 void delete_list(Node *&head) {
     Node *current = head;
     while (current) {
-        head = current->next;
-        delete current;
-        current = head;
+        Node *nextNode = current->next; 
+        delete current;                
+        current = nextNode;           
     }
-    head = nullptr;
+    head = nullptr; 
 }
 
