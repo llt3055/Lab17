@@ -163,6 +163,17 @@ void insert_node(Node *&head, float val, int pos) {
             current = current->next;
         }
     }
+}
 
+void delete_node(Node *&head, int pos) {
+    Node *current = head;
+    Node *prev = nullptr;
+
+    for (int i = 0; i < (pos - 1); i++) {
+        if (current) {
+            prev = current;
+            current = current->next;
+        }
+    }
 
 }
