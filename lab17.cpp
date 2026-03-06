@@ -136,3 +136,17 @@ void push_front(Node *&head, float val) {
     newNode->next = head;
     head = newNode;
 }
+
+void push_back(Node *&head, float val) {
+    Node *newNode = new Node;
+    newNode->value = val;
+    newNode->next = nullptr;
+    
+    if (!head) {
+        head = newNode;
+    } else {
+        Node *temp = head;
+        while (temp->next) {
+
+    }
+}
