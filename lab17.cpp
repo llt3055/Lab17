@@ -138,18 +138,17 @@ void push_front(Node *&head, float val) {
 }
 
 void push_back(Node *&head, float val) {
-    Node *newNode = new Node;
-    newNode->value = val;
-    newNode->next = nullptr;
-    
+    Node *newVal = new Node;
+    newVal->value = val;
+    newVal->next = nullptr;
     if (!head) {
-        head = newNode;
+        head = newVal;
     } else {
         Node *temp = head;
         while (temp->next) {
             temp = temp->next;
         }
-        temp = newNode; 
+        temp->next = newVal;
     }
 }
 
@@ -176,4 +175,22 @@ void delete_node(Node *&head, int pos) {
         }
     }
 
+    if (current) {
+        if (prev == nullptr) {
+            head = current->next;
+        } else {
+            prev->next = current->next;
+        }
+        delete current;
+    }
+}
+
+void delete_list(Node *&head) {
+    Node *current = head;
+    while (current) {
+        head = current->next;
+        delete current;
+        current = head;
+    }
+    head = nullptr;
 }
