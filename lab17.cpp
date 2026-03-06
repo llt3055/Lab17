@@ -8,6 +8,12 @@ struct Node {
     Node *next;
 };
 
+
+void push_front(Node *&head, float val);  
+void push_back(Node *&head, float val);   
+void insert_node(Node *&head, float val, int pos); 
+void delete_node(Node *&head, int pos);   
+void delete_list(Node *&head);
 void output(Node *);
 
 int main() {
