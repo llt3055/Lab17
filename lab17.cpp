@@ -147,6 +147,22 @@ void push_back(Node *&head, float val) {
     } else {
         Node *temp = head;
         while (temp->next) {
-
+            temp = temp->next;
+        }
+        temp = newNode; 
     }
+}
+
+void insert_node(Node *&head, float val, int pos) {
+    Node *current = head;
+    Node *prev = nullptr;
+
+    for (int i = 0; i < pos; i++) {
+        if (current) {
+            prev = current;
+            current = current->next;
+        }
+    }
+
+
 }
