@@ -1,3 +1,4 @@
+ // COMSC-210 | Lab  17| Tianyi Cao        
 #include <iostream>
 #include <cstdlib> 
 #include <ctime>  
